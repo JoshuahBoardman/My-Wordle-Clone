@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <title>My Wordle Clone</title>
 </head>
 <body>
@@ -19,83 +19,83 @@
             <h1 class="title">WORDLE</h1>
         </header>
         <div class="display">
-            <div class="display-row">
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
+            <div class="display-row" data-display-row-1>
+                <div class="display-item" data-row-item-1></div>
+                <div class="display-item" data-row-item-2></div>
+                <div class="display-item" data-row-item-3></div>
+                <div class="display-item" data-row-item-4></div>
+                <div class="display-item" data-row-item-5></div>
             </div>
-            <div class="display-row">
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
+            <div class="display-row" data-display-row-2>
+                <div class="display-item" data-row-item-1></div>
+                <div class="display-item" data-row-item-2></div>
+                <div class="display-item" data-row-item-3></div>
+                <div class="display-item" data-row-item-4></div>
+                <div class="display-item" data-row-item-5></div>
             </div>
-            <div class="display-row">
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
+            <div class="display-row" data-display-row-3>
+                <div class="display-item" data-row-item-1></div>
+                <div class="display-item" data-row-item-2></div>
+                <div class="display-item" data-row-item-3></div>
+                <div class="display-item" data-row-item-4></div>
+                <div class="display-item" data-row-item-5></div>
             </div>
-            <div class="display-row">
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
+            <div class="display-row" data-display-row-4>
+                <div class="display-item" data-row-item-1></div>
+                <div class="display-item" data-row-item-2></div>
+                <div class="display-item" data-row-item-3></div>
+                <div class="display-item" data-row-item-4></div>
+                <div class="display-item" data-row-item-5></div>
             </div>
-            <div class="display-row">
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
+            <div class="display-row" data-display-row-5>
+                <div class="display-item" data-row-item-1></div>
+                <div class="display-item" data-row-item-2></div>
+                <div class="display-item" data-row-item-3></div>
+                <div class="display-item" data-row-item-4></div>
+                <div class="display-item" data-row-item-5></div>
             </div>
-            <div class="display-row">
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
-                <div class="display-item"></div>
+            <div class="display-row" data-display-row-6>
+                <div class="display-item" data-row-item-1></div>
+                <div class="display-item" data-row-item-2></div>
+                <div class="display-item" data-row-item-3></div>
+                <div class="display-item" data-row-item-4></div>
+                <div class="display-item" data-row-item-5></div>
             </div>
         </div>
-        <div class="keyboard">
+        <div class="keyboard" id="keyboard">
             <div class="keyboard-row">
-                <button class="keyboard-btn">Q</button>
-                <button class="keyboard-btn">W</button>
-                <button class="keyboard-btn">E</button>
-                <button class="keyboard-btn">R</button>
-                <button class="keyboard-btn">T</button>
-                <button class="keyboard-btn">Y</button>
-                <button class="keyboard-btn">U</button>
-                <button class="keyboard-btn">I</button>
-                <button class="keyboard-btn">O</button>
-                <button class="keyboard-btn">P</button>
+                <button class="keyboard-btn" data-letter-btn>Q</button>
+                <button class="keyboard-btn" data-letter-btn>W</button>
+                <button class="keyboard-btn" data-letter-btn>E</button>
+                <button class="keyboard-btn" data-letter-btn>R</button>
+                <button class="keyboard-btn" data-letter-btn>T</button>
+                <button class="keyboard-btn" data-letter-btn>Y</button>
+                <button class="keyboard-btn" data-letter-btn>U</button>
+                <button class="keyboard-btn" data-letter-btn>I</button>
+                <button class="keyboard-btn" data-letter-btn>O</button>
+                <button class="keyboard-btn" data-letter-btn>P</button>
             </div>
             <div class="keyboard-row">
-                <button class="keyboard-btn">A</button>
-                <button class="keyboard-btn">S</button>
-                <button class="keyboard-btn">D</button>
-                <button class="keyboard-btn">F</button>
-                <button class="keyboard-btn">G</button>
-                <button class="keyboard-btn">H</button>
-                <button class="keyboard-btn">I</button>
-                <button class="keyboard-btn">J</button>
-                <button class="keyboard-btn">K</button>
-                <button class="keyboard-btn">L</button>
+                <button class="keyboard-btn" data-letter-btn>A</button>
+                <button class="keyboard-btn" data-letter-btn>S</button>
+                <button class="keyboard-btn" data-letter-btn>D</button>
+                <button class="keyboard-btn" data-letter-btn>F</button>
+                <button class="keyboard-btn" data-letter-btn>G</button>
+                <button class="keyboard-btn" data-letter-btn>H</button>
+                <button class="keyboard-btn" data-letter-btn>I</button>
+                <button class="keyboard-btn" data-letter-btn>J</button>
+                <button class="keyboard-btn" data-letter-btn>K</button>
+                <button class="keyboard-btn" data-letter-btn>L</button>
             </div>
             <div class="keyboard-row">
-                <button class="keyboard-btn">Enter</button>
-                <button class="keyboard-btn">Z</button>
-                <button class="keyboard-btn">X</button>
-                <button class="keyboard-btn">V</button>
-                <button class="keyboard-btn">B</button>
-                <button class="keyboard-btn">N</button>
-                <button class="keyboard-btn">M</button>
-                <button class="keyboard-btn">Back</button>
+                <button class="keyboard-btn" data-enter-btn>Enter</button>
+                <button class="keyboard-btn" data-letter-btn>Z</button>
+                <button class="keyboard-btn" data-letter-btn>X</button>
+                <button class="keyboard-btn" data-letter-btn>V</button>
+                <button class="keyboard-btn" data-letter-btn>B</button>
+                <button class="keyboard-btn" data-letter-btn>N</button>
+                <button class="keyboard-btn" data-letter-btn>M</button>
+                <button class="keyboard-btn" data-back-btn>Back</button>
             </div>
         </div>
     </div>
