@@ -1,4 +1,5 @@
 const keyboard = document.getElementById("keyboard");
+const letterKeys = document.querySelectorAll('[data-letter-btn]');
 const display = document.getElementById("display");
 
 // TODO: import these as json files or fetch them as json files.
@@ -15300,21 +15301,24 @@ let currentGuess = [];
 let currentRow = 0;
 
 function clickLetter(e) {
-    if (!e.target.hasAttribute('data-letter-btn')) return;
+    if(!e.target.hasAttribute('data-letter-btn') || e.target.classList.contains("no-matches")) return;
     if(currentGuess.length >= 5) return;
     currentGuess.push(e.target.innerText);
 };
 
 function clickBack(e) {
-    if (!e.target.hasAttribute('data-back-btn')) return;
+    if(!e.target.hasAttribute('data-back-btn')) return;
     currentGuess.pop();
 };
 
 function clickEnter(e) {
-    if (!e.target.hasAttribute('data-enter-btn')) return;
+    if(!e.target.hasAttribute('data-enter-btn') ||
+        allGuesses.length > 6 ||
+        currentGuess.length !== 5 ||
+        !isGuessAWord()) return;
     compareCurrentGuess();
-    if(allGuesses.length >= 6) return;
     allGuesses.push(currentGuess);
+    if(currentRow >= 5) return;
     currentGuess = [];
     currentRow++;
 };
@@ -15328,12 +15332,26 @@ function displayCurrentGuess() {
     };
 };
 
+function isGuessAWord() {
+    const currentGuessToString = currentGuess.join("").toLowerCase();
+    return dictionary.includes(currentGuessToString);
+}
+
+function compareCurrentGuess() {
+    const passwordToArray = password.toUpperCase().split("");
+    letterShareComparison(passwordToArray);
+    letterPositionsComparison(passwordToArray);
+
+};
+
 function letterShareComparison(passwordToArray) {
     currentGuess.forEach((letter, index)=> {
        if(passwordToArray.includes(letter)) {
         display.children[currentRow].children[index].classList.add('share-letter');
+        changeKeyboardColor(letter, 'share-letter')
        } else {
         display.children[currentRow].children[index].classList.add('no-matches');
+        changeKeyboardColor(letter, 'no-matches')
        }
     })
 }
@@ -15344,15 +15362,21 @@ function letterPositionsComparison(passwordToArray) {
         display.children[currentRow].children[index].classList.remove('no-matches');
         display.children[currentRow].children[index].classList.remove('share-letter');
         display.children[currentRow].children[index].classList.add('same-letter-position');
+        changeKeyboardColor(letter, 'same-letter-position')
     })
 }
 
-function compareCurrentGuess() {
-    const passwordToArray = password.toUpperCase().split("");
-    letterShareComparison(passwordToArray);
-    letterPositionsComparison(passwordToArray);
-
-};
+function changeKeyboardColor(letter, className) {
+    letterKeys.forEach(key => {
+        if(letter === key.innerText) {
+            if(key.classList.contains(className)) return;
+            if(className === "same-letter-position") {
+                key.classList.remove("share-letter")
+            }
+            key.classList.add(`${className}`);
+        }
+    })
+}
 
 function setPassword() {
     let passwordIndex = Math.floor(Math.random() * possiblePasswords.length);
@@ -15364,5 +15388,5 @@ keyboard.addEventListener("click", e => {
     clickBack(e);
     clickEnter(e);
     displayCurrentGuess();
-    console.log(password)
 });
+console.log(password)
