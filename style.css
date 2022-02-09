@@ -3,6 +3,7 @@
 :root {
     --primary-color-200: hsl(0, 0%, 99%);
     --primary-color-400: hsl(0, 0%, 85%);
+    --primary-color-500: hsl(0, 0%, 45%);
     --primary-color-600: hsl(0, 0%, 21%);
     --primary-color-800: hsl(0, 0%, 9%);
 }
@@ -70,7 +71,6 @@ header .title {
 .display-row .display-item {
     font-size: 3rem;
     font-weight: 600;
-    background-color: transparent;
     color: var(--primary-color-800);
     display: flex;
     justify-content: center;
@@ -80,6 +80,24 @@ header .title {
     margin: 0 .2rem;
     width: 4.5rem;
     height: 4.5rem;
+}
+
+.display-row .share-letter {
+    background-color: #c7ad38;
+    color: var(--primary-color-200);
+    border-color: #c7ad38;
+}
+
+.display-row .same-letter-position {
+    background-color: #48b332;
+    color: var(--primary-color-200);
+    border-color: #48b332;
+}
+
+.display-row .no-matches {
+    background-color: var(--primary-color-500);
+    color: var(--primary-color-200);
+    border-color: var(--primary-color-500);
 }
 
 .keyboard {
@@ -106,3 +124,4 @@ header .title {
     margin: 0 .2rem;
     cursor: pointer;
 }
+
