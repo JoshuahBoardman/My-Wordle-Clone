@@ -4,8 +4,9 @@
     --primary-color-200: hsl(0, 0%, 99%);
     --primary-color-400: hsl(0, 0%, 85%);
     --primary-color-500: hsl(0, 0%, 45%);
-    --primary-color-600: hsl(0, 0%, 21%);
+    --primary-color-600: hsl(0, 0%, 26%);
     --primary-color-800: hsl(0, 0%, 9%);
+    --primary-color-900: hsl(0, 0%, 0%);
 }
 
 *,
@@ -22,6 +23,7 @@ body {
 }
 
 .content-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,6 +54,25 @@ header .title {
 }
 
 /* Layout */ 
+
+.results {
+    position: absolute;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color-800);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 5rem;
+}
+
+.results-btn {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--primary-color-900);
+    margin-top: .25rem;
+}
 
 .display {
     display: flex;

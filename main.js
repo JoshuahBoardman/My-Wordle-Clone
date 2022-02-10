@@ -1,6 +1,7 @@
 const keyboard = document.getElementById("keyboard");
 const letterKeys = document.querySelectorAll('[data-letter-btn]');
 const display = document.getElementById("display");
+const results = document.getElementById("results");
 
 // TODO: import these as json files or fetch them as json files.
 const dictionary = [
@@ -15300,8 +15301,17 @@ let password = setPassword();
 let currentGuess = [];
 let currentRow = 0;
 
+keyboard.addEventListener("click", handleClicks);
+
+function handleClicks(e) {
+    clickLetter(e);
+    clickBack(e);
+    clickEnter(e);
+    displayCurrentGuess();
+}
+
 function clickLetter(e) {
-    if(!e.target.hasAttribute('data-letter-btn') || e.target.classList.contains("no-matches")) return;
+    if(!e.target.hasAttribute('data-letter-btn')) return;
     if(currentGuess.length >= 5) return;
     currentGuess.push(e.target.innerText);
 };
@@ -15317,7 +15327,9 @@ function clickEnter(e) {
         currentGuess.length !== 5 ||
         !isGuessAWord()) return;
     compareCurrentGuess();
+    win();
     allGuesses.push(currentGuess);
+    lose();
     if(currentRow >= 5) return;
     currentGuess = [];
     currentRow++;
@@ -15356,6 +15368,31 @@ function letterShareComparison(passwordToArray) {
     })
 }
 
+function win() {
+    const currentGuessToString = currentGuess.join("").toLowerCase();
+    if(currentGuessToString === password && allGuesses.length <= 6) {
+        displayResults("YOU WIN!");
+        keyboard.removeEventListener("click", handleClicks);
+    }
+}
+
+function lose() {
+    const currentGuessToString = currentGuess.join("").toLowerCase();
+    if(allGuesses.length >= 6 && currentGuessToString !== password) {
+        displayResults("YOU LOSE");
+        keyboard.removeEventListener("click", handleClicks);
+    }
+}
+
+function displayResults(resultMsg) {
+    const formatedPassword = `${password.charAt(0).toUpperCase()}${password.slice(1)}`;
+    results.innerHTML = `
+        <span>${resultMsg}</span>
+        <span>The word was: ${formatedPassword}</span>
+        <a href="/" class="results-btn"><i class="fas fa-arrow-rotate-left"></i> Play Again</a>
+    `
+}
+
 function letterPositionsComparison(passwordToArray) {
     currentGuess.forEach((letter, index) => {
         if(letter !== passwordToArray[index]) return;
@@ -15382,11 +15419,3 @@ function setPassword() {
     let passwordIndex = Math.floor(Math.random() * possiblePasswords.length);
     return possiblePasswords[passwordIndex];
 };
-
-keyboard.addEventListener("click", e => {
-    clickLetter(e);
-    clickBack(e);
-    clickEnter(e);
-    displayCurrentGuess();
-});
-console.log(password)
