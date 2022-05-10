@@ -79,7 +79,7 @@ header .title {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 8rem 0;
+    padding: 8rem 0 4rem;
 }
 
 .display-row {
