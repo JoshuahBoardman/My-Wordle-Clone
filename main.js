@@ -15324,8 +15324,11 @@ function clickBack(e) {
 function clickEnter(e) {
     if(!e.target.hasAttribute('data-enter-btn') ||
         allGuesses.length > 6 ||
-        currentGuess.length !== 5 ||
-        !isGuessAWord()) return;
+        currentGuess.length !== 5) return;
+    if(!isGuessAWord()) {
+        displayNotAWord();
+        return;
+    }
     compareCurrentGuess();
     win();
     allGuesses.push(currentGuess);
@@ -15382,6 +15385,13 @@ function lose() {
         displayResults("YOU LOSE");
         keyboard.removeEventListener("click", handleClicks);
     }
+}
+
+function displayNotAWord() {
+    results.innerHTML = `<span>Not in word list</span>`
+    setTimeout(() => {
+        results.innerHTML = "";
+    }, 1500)
 }
 
 function displayResults(resultMsg) {
